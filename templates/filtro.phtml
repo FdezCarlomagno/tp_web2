@@ -1,0 +1,13 @@
+
+
+<form action="filtrar" method="GET">
+    <select name="categoria_id">
+        <option value="">Seleccione una categoría</option>
+        <?php foreach ($categorias as $categoria): ?>
+            <option value="<?= $categoria->id_categoria; ?>">
+                <?= $categoria->nombre; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit" class="btn">Filtrar</button>
+</form>

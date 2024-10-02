@@ -1,0 +1,32 @@
+<?php
+require "header.phtml";
+?>
+
+<div class="container">
+    <h1>GUITARRAS</h1>
+    <aside>
+        <ul class="list display-inline">
+            <h3>Categorias</h3>
+            <?php foreach($categorias as $categoria): ?>
+                <?php if($categoria->nombre != "sin_categoria"):?>
+                <li><?= $categoria->nombre; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+        <?php require "filtro.phtml"; ?>
+    </aside>
+    <ul class="list">
+        <?php foreach ($guitarras as $guitarra):?>
+            <li>
+                <h2><a href="guitarra/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
+                <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
+                <p>Precio: $<?= $guitarra->precio; ?></p>
+            </li>
+        <?php endforeach?>
+    </ul>
+</div>
+</main>
+
+<?php
+require "footer.phtml"
+    ?>

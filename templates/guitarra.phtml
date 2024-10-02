@@ -1,0 +1,15 @@
+<?php
+require "header.phtml";
+?>
+
+<div class="container">
+    <li>
+        <h2><?= $guitarra->nombre; ?></h2>
+        <li>Categoria: <?= $guitarra->categoria_nombre; ?></li>
+        <li>Precio: $<?= $guitarra->precio; ?></li>
+    </li>
+</div>
+
+<?php
+require "footer.phtml";
+?>
