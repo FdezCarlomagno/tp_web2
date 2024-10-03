@@ -13,15 +13,16 @@ class ControllerAuth{
     public function showLogin() {
         // Muestro el formulario de login
         return $this->view->showLogin();
+
     }
 
     public function login() {
         if (!isset($_POST['nickname']) || empty($_POST['nickname'])) {
-            return $this->view->showLogin('Falta completar el nombre de usuario');
+            return $this->view->showLogin();
         }
     
         if (!isset($_POST['password']) || empty($_POST['password'])) {
-            return $this->view->showLogin('Falta completar la contraseña');
+            return $this->view->showLogin();
         }
     
         $nickname = $_POST['nickname'];

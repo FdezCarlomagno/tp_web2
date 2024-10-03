@@ -24,6 +24,16 @@ class Controller
 
         $this->view->showHome($guitarras, $categorias);
     }
+    public function showHomeInvitado()
+    {
+        $guitarras = $this->model->getGuitarras();
+        $categorias = $this->model->getCategorias();
+
+        $this->setCategoriaNombre($guitarras);
+
+        $this->view->showHomeInvitado($guitarras, $categorias);
+
+    }
     private function setCategoriaNombre($guitarras)
     {
         foreach ($guitarras as $guitarra) {
@@ -39,6 +49,14 @@ class Controller
 
         $this->view->showGuitarra($guitarra);
     }
+    public function showGuitarraInvitado($id_guitarra)
+    {
+        $guitarra = $this->model->getGuitarraById($id_guitarra);
+
+        $guitarra->categoria_nombre = $this->model->getNombreCategoriaById($guitarra->categoria_id);
+
+        $this->view->showGuitarraInvitado($guitarra);
+    }
     public function showGuitarrasFiltradas()
     {
         if (isset($_GET['categoria_id']) && !empty($_GET['categoria_id'])) {
@@ -53,6 +71,23 @@ class Controller
         $this->setCategoriaNombre($guitarras);
 
         $this->view->showHome($guitarras, $categorias); // Pasar las guitarras y categorías a la vista
+
+    }
+    
+    public function showGuitarrasFiltradasInvitado()
+    {
+        if (isset($_GET['categoria_id']) && !empty($_GET['categoria_id'])) {
+            $id_categoria = $_GET['categoria_id'];
+            $guitarras = $this->model->getGuitarrasByCategoria($id_categoria);
+        } else {
+            $this->redirect();
+        }
+
+        $categorias = $this->model->getCategorias(); // Obtener todas las categorías
+
+        $this->setCategoriaNombre($guitarras);
+
+        $this->view->showHomeInvitado($guitarras, $categorias); // Pasar las guitarras y categorías a la vista
 
     }
     public function addGuitarra()

@@ -59,6 +59,7 @@ FK = Foreign Key (Clave foránea)
     tp_web2/centro_guitarras.sql
 
 3. La base de datos se creará con datos de ejemplo que incluyen algunas guitarras y sus respectivas categorías.
+4. Para acceder a la administracion del sitio se debe poner "localhost/showlogin" en la url y las credenciales son admin/123456.
 
 Ejemplos de Datos
 Categorías:

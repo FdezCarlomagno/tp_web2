@@ -7,7 +7,7 @@ function sessionAuthMiddleware($res) {
         $res->user->nickname = $_SESSION['NICKNAME_USER'];
         return;
     } else {
-        header('Location: ' . BASE_URL . 'showLogin');
+        header('Location: ' . BASE_URL . 'home');
         die();
     }
 }

@@ -1,5 +1,5 @@
 <?php
-require "header.phtml";
+require "headerAdmin.phtml";
 ?>
 
 <div class="container">
@@ -8,6 +8,7 @@ require "header.phtml";
     <ul>
         <li>Categoria: <?= $guitarra->categoria_nombre; ?></li>
         <li>Precio: $<?= $guitarra->precio; ?></li>
+        <a href="form_updateCategoria/<?= $guitarra->id_guitarra; ?>"><button class="btn">Cambiar categoria</button></a>
 </ul>
 </div>
 

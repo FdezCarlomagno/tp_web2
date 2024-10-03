@@ -1,5 +1,5 @@
 <?php
-require "header.phtml";
+require "headerAdmin.phtml";
 ?>
 
 <div class="container">
@@ -35,12 +35,12 @@ require "header.phtml";
     <?php endif; ?>
 <?php endforeach; ?>
         </ul>
-        <?php require "filtro.phtml"; ?>
+        <?php require "filtroAdmin.phtml"; ?>
     </aside>
     <ul class="list">
         <?php foreach ($guitarras as $guitarra): ?>
             <li>
-                <h2><a href="guitarra/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
+                <h2><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
                 <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
                 <p>Precio: $<?= $guitarra->precio; ?></p>
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>

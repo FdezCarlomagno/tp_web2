@@ -11,7 +11,14 @@ class View {
         //Mostrar guitarras sin filtrar
         require "templates/home.phtml";
     }
+    public function showHomeInvitado($guitarras, $categorias){
+        //Mostrar guitarras sin filtrar
+        require "templates/homeInvitado.phtml";
+    }
     public function showGuitarra($guitarra){
+        require "templates/guitarraAdmin.phtml";
+    }
+    public function showGuitarraInvitado($guitarra){
         require "templates/guitarra.phtml";
     }
     public function showError($msg){
