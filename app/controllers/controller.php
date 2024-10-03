@@ -8,10 +8,11 @@ class Controller
     private $model;
     private $view;
 
-    public function __construct()
+    public function __construct($res)
     {
         $this->model = new Model();
-        $this->view = new View();
+        $this->view = new View($res->user);
+
     }
 
     public function showHome()
@@ -77,8 +78,11 @@ class Controller
         $this->redirect();
     }
     public function deleteGuitarra($id)
-    {
+    {   
         $this->model->deleteGuitarra($id);
+
+
+        
 
         $this->redirect();
     }
@@ -129,6 +133,17 @@ class Controller
         $guitarra->categoria_nombre = $this->model->getNombreCategoriaById($guitarra->categoria_id);
 
         $this->view->showFormUpdateCategoria($guitarra, $categorias);
+    }
+    public function updateCategoria($idGuitarra){
+        if (isset($_POST["categoria_id"])) {
+            $idCategoriaNueva=$_POST["categoria_id"];
+            $this->model->updateCategoriaGuitarra($idGuitarra, $idCategoriaNueva);
+        }
+       
+        $this->redirect();
+
+
+
     }
 
     private function redirect()

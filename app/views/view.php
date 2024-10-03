@@ -1,6 +1,12 @@
 <?php
 
 class View {
+    private $user=null;
+    public function __construct($user)
+    {
+        $this->user=$user;
+        
+    }
     public function showHome($guitarras, $categorias){
         //Mostrar guitarras sin filtrar
         require "templates/home.phtml";
@@ -20,4 +26,5 @@ class View {
     public function showFormUpdateCategoria($guitarra, $categorias){
         require "templates/formUpdateCategoria.phtml";
     }
+    
 }

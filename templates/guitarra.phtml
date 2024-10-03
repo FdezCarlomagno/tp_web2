@@ -3,11 +3,12 @@ require "header.phtml";
 ?>
 
 <div class="container">
-    <li>
-        <h2><?= $guitarra->nombre; ?></h2>
+    
+    <h2><?= $guitarra->nombre; ?></h2>
+    <ul>
         <li>Categoria: <?= $guitarra->categoria_nombre; ?></li>
         <li>Precio: $<?= $guitarra->precio; ?></li>
         <a href="form_updateCategoria/<?= $guitarra->id_guitarra; ?>"><button class="btn">Cambiar categoria</button></a>
-    </li>
+</ul>
 </div>
 

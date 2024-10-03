@@ -7,28 +7,71 @@ require "header.phtml";
     <aside>
         <ul class="list display-inline">
             <h3>Categorias</h3>
-            <?php foreach($categorias as $categoria): ?>
-                <?php if($categoria->nombre != "sin_categoria"):?>
-                <li><?= $categoria->nombre; ?></li>
-                <a href="deleteCategoria/<?= $categoria->id_categoria; ?>"><button class="btn btn-danger">Eliminar</button></a>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <?php foreach ($categorias as $categoria): ?>
+    <?php if ($categoria->nombre != "sin_categoria"): ?>
+        <li><?= $categoria->nombre; ?></li>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $categoria->id_categoria; ?>">Eliminar</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal<?= $categoria->id_categoria; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $categoria->id_categoria; ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel<?= $categoria->id_categoria; ?>">Confirmación de eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Seguro que quieres eliminar la categoría: <strong><?= $categoria->nombre; ?></strong>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+                        <!-- Botón para confirmar eliminación -->
+                        <a href="deleteCategoria/<?= $categoria->id_categoria; ?>" class="btn btn-danger">Sí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
         </ul>
         <?php require "filtro.phtml"; ?>
     </aside>
     <ul class="list">
-        <?php foreach ($guitarras as $guitarra):?>
+        <?php foreach ($guitarras as $guitarra): ?>
             <li>
                 <h2><a href="guitarra/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
                 <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
                 <p>Precio: $<?= $guitarra->precio; ?></p>
-                <a href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>"><button class="btn btn-danger">Eliminar</button></a>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>
             </li>
-        <?php endforeach?>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal<?=$guitarra->id_guitarra;?>" tabindex="-1" aria-labelledby="deleteModalLabel<?=$guitarra->id_guitarra;?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel<?=$guitarra->id_guitarra;?>">Confirmación de eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Seguro que quieres eliminar la guitarra: <strong><?=$guitarra->nombre?></strong>?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+
+                            <a class= "btn btn-danger"href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>">  Sí</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
     </ul>
 </div>
 </main>
 
+
+
 <?php
 require "footer.phtml"
-    ?>
+?>

@@ -3,7 +3,7 @@ require "guitarra.phtml";
 ?>
 
 <div class="form">
-    <form action="updateCategoria" method="POST" class="form">
+    <form action="updateCategoria/<?=$guitarra->id_guitarra?>" method="POST" class="form">
         <select name="categoria_id">
             <option value="">Seleccione una categoría</option>
             <?php foreach ($categorias as $categoria): ?>
