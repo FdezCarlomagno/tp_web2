@@ -11,4 +11,13 @@ class View {
     public function showError($msg){
         require "templates/error.phtml";
     }
+    public function showFormGuitarra($categorias){
+        require "templates/formGuitarra.phtml";
+    }
+    public function showFormCategoria(){
+        require "templates/formCategoria.phtml";
+    }
+    public function showFormUpdateCategoria($guitarra, $categorias){
+        require "templates/formUpdateCategoria.phtml";
+    }
 }

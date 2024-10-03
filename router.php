@@ -22,7 +22,7 @@ switch ($params[0]) {
         $controller->showHome();
         break;
     case "guitarra":
-        if(isset($params[1])){
+        if (isset($params[1])) {
             $id = $params[1];
             $controller->showGuitarra($id);
         }
@@ -30,6 +30,40 @@ switch ($params[0]) {
     case "filtrar":
         $controller->showGuitarrasFiltradas();
         break;
+    case "form_guitarra":
+        $controller->showFormGuitarra();
+        break;
+    case "addGuitarra":
+        $controller->addGuitarra();
+        break;
+    case "deleteGuitarra":
+        if (isset($params[1])) {
+            $id_guitarra = $params[1];
+            $controller->deleteGuitarra($id_guitarra);
+        }
+        break;
+    case "addCategoria":
+        $controller->addCategoria();
+        break;
+    case "form_categoria":
+        $controller->showFormCategoria();
+        break;
+    case "deleteCategoria":
+        if(isset($params[1])){
+            $id_categoria = $params[1];
+            $controller->deleteCategoria($id_categoria);
+        }
+        break;
+    case "form_updateCategoria":
+        if(isset($params[1])){
+            $id_guitarra = $params[1];
+            $controller->showFormUpdateCategoria($id_guitarra);
+        }
+        break;
+    case "updateCategoria":
+        if(isset($params[1])){
+            //falta implementar esto
+        }
     default:
         $controller->showHome();
         break;

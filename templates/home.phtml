@@ -10,6 +10,7 @@ require "header.phtml";
             <?php foreach($categorias as $categoria): ?>
                 <?php if($categoria->nombre != "sin_categoria"):?>
                 <li><?= $categoria->nombre; ?></li>
+                <a href="deleteCategoria/<?= $categoria->id_categoria; ?>"><button class="btn btn-danger">Eliminar</button></a>
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>
@@ -21,6 +22,7 @@ require "header.phtml";
                 <h2><a href="guitarra/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
                 <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
                 <p>Precio: $<?= $guitarra->precio; ?></p>
+                <a href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>"><button class="btn btn-danger">Eliminar</button></a>
             </li>
         <?php endforeach?>
     </ul>

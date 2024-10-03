@@ -1,0 +1,23 @@
+<?php
+require "header.phtml";
+?>
+
+<div class="form">
+<form action="addGuitarra" method="POST" class="form">
+    <input type="text" placeholder="Ingrese el nombre de la guitarra" name="nombre" required>
+    <input type="number" placeholder="Ingrese el precio de la guitarra" name="precio" required>
+    <select name="categoria_id">
+        <option value="">Seleccione una categoría</option>
+        <?php foreach ($categorias as $categoria): ?>
+            <option value="<?= $categoria->id_categoria; ?>">
+                <?= $categoria->nombre; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit" class="btn">Agregar</button>
+</form>
+</div>
+
+<?php
+require "footer.phtml";
+?>
