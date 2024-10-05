@@ -1,5 +1,6 @@
 <?php
 
+require "config.php";
 class Model
 {
     private $db;
@@ -7,11 +8,29 @@ class Model
     public function __construct()
     {
         $this->db = $this->getConnection();
+        $this->_deploy();
     }
     private function getConnection()
     {
-        return new PDO('mysql:host=localhost;dbname=centro_guitarras;charset=utf8', 'root', '');
+        return new PDO(
+            "mysql:host=" . MYSQL_HOST . ";dbname=" . MYSQL_DB . ";charset=utf8",
+            MYSQL_USER,
+            MYSQL_PASS
+        );
     }
+
+    private function _deploy()
+    {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if (count($tables) == 0) {
+            $sql = <<<END
+		END;
+            $this->db->query($sql);
+        }
+    }
+
+
 
     public function getGuitarras()
     {
@@ -114,26 +133,29 @@ class Model
         $query = $this->db->prepare("DELETE FROM categoria WHERE id_categoria = ?");
         $query->execute([$categoria_id]);
     }
-    public function getNombreCategoriaById($id_categoria){
+    public function getNombreCategoriaById($id_categoria)
+    {
         $query = $this->db->prepare("SELECT nombre FROM categoria WHERE id_categoria = ?");
         $query->execute([$id_categoria]);
 
         $categoria = $query->fetch(PDO::FETCH_OBJ);
 
-        if($categoria){
+        if ($categoria) {
             return $categoria->nombre;
         } else {
             return null;
         }
     }
-    public function getCategorias(){
+    public function getCategorias()
+    {
         $query = $this->db->prepare("SELECT * FROM categoria");
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function updateImg($id, $imagen_url){
+    public function updateImg($id, $imagen_url)
+    {
         $query = $this->db->prepare("UPDATE guitarra SET imagen_url = ? WHERE id_guitarra = ?");
         $query->execute([$imagen_url, $id]);
 

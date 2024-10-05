@@ -11,7 +11,7 @@ require_once "app/middlewares/sessionAuthMiddleware.php";
 
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
-$res = new Response();
+
 
 
 
@@ -22,11 +22,11 @@ if (!empty($_GET["action"])) {
 }
 
 $params = explode("/", $action);
+
+//INSTANCIACION DE OBJETOS A UTILIZAR
+$res = new Response();
 $controller = new Controller($res);
-
 $controllerAuth = new ControllerAuth();
-
-
 
 switch ($params[0]) {
     case "home":
@@ -37,7 +37,6 @@ switch ($params[0]) {
         $controller->showHome();
         break;
     case "guitarra":
-
         if (isset($params[1])) {
 
             $id = $params[1];
@@ -47,7 +46,6 @@ switch ($params[0]) {
     case "guitarraAdmin":
         sessionAuthMiddleware($res);
         if (isset($params[1])) {
-
             $id = $params[1];
             $controller->showGuitarra($id);
         }
@@ -114,17 +112,20 @@ switch ($params[0]) {
         }
         break;
     case "form_updateImg":
-        if(isset($params[1])){
+        if (isset($params[1])) {
             $controller->showFormUpdateImg($params[1]);
         }
-        
+
         break;
     case "updateImg":
         sessionAuthMiddleware($res);
 
-        if(isset($params[1])){
+        if (isset($params[1])) {
             $controller->updateImg($params[1]);
         }
+        break;
+    case "signup":
+        $controllerAuth->showSignup();
         break;
     case "error":
         $controllerAuth->showError();
@@ -136,7 +137,7 @@ switch ($params[0]) {
         $controllerAuth->login();
         break;
     case 'logout':
-        $controllerAuth ->logout();
+        $controllerAuth->logout();
     default:
         $controller->showError("Pagina no encontrada");
         break;

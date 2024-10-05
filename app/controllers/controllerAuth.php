@@ -32,8 +32,6 @@ class ControllerAuth{
         // Verificar que el usuario está en la base de datos
         $userFromDB = $this->model->getUserByNickName($nickname);
 
-        // password: 123456
-        // $userFromDB->password: $2y$10$xQop0wF1YJ/dKhZcWDqHceUM96S04u73zGeJtU80a1GmM.H5H0EHC
         if($userFromDB && password_verify($password, $userFromDB->password)){
             // Guardo en la sesión el ID del usuario
             session_start();
@@ -51,6 +49,10 @@ class ControllerAuth{
     }
     public function showError(){
         $this->view->showError();
+    }
+
+    public function showSignup(){
+        $this->view->showSignup();
     }
 
     public function logout() {
