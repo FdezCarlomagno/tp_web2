@@ -1,14 +1,26 @@
 
 
-<form action="filtrarAdmin" method="GET">
-    <select name="categoria_id">
-        <option value="">Seleccione una categoría</option>
-        <?php foreach ($categorias as $categoria): ?>
-            <option value=<?= $categoria->id_categoria; ?>>
-                <?= $categoria->nombre; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-    <button type="submit" class="btn">Filtrar</button>
-    <button type="reset " class= "btn">borrar filtros</button>
-</form>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Filtrar Guitarras</h2>
+    <form action="filtrarAdmin" method="GET" class="p-4 border rounded shadow">
+        <div class="mb-3">
+            <label for="categoria_id" class="form-label">Selecciona una Categoría</label>
+            <select class="form-select" id="categoria_id" name="categoria_id">
+                <option value="">Seleccione una categoría</option>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria->id_categoria; ?>">
+                        <?= $categoria->nombre; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <button type="reset" class="btn btn-secondary">Borrar Filtros</button>
+        </div>
+    </form>
+</div>
+
+<!-- Añade Bootstrap JS si lo necesitas -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+

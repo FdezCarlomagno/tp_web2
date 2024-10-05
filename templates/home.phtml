@@ -2,73 +2,88 @@
 require "headerAdmin.phtml";
 ?>
 
-<div class="container">
-    <h1>GUITARRAS</h1>
-    <aside>
-        <ul class="list display-inline">
-            <h3>Categorias</h3>
-            <?php foreach ($categorias as $categoria): ?>
-    <?php if ($categoria->nombre != "sin_categoria"): ?>
-        <li><?= $categoria->nombre; ?></li>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $categoria->id_categoria; ?>">Eliminar</button>
+<div class="container mt-5">
+    <h1 class="text-center mb-5">GUITARRAS</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <aside>
+                <h3>Categorías</h3>
+                <ul class="list-group">
+                    <?php foreach ($categorias as $categoria): ?>
+                        <?php if ($categoria->nombre != "sin_categoria"): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= $categoria->nombre; ?>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $categoria->id_categoria; ?>">Eliminar</button>
+                            </li>
 
-        <!-- Modal -->
-        <div class="modal fade" id="deleteModal<?= $categoria->id_categoria; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $categoria->id_categoria; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel<?= $categoria->id_categoria; ?>">Confirmación de eliminación</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Seguro que quieres eliminar la categoría: <strong><?= $categoria->nombre; ?></strong>?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <!-- Modal para eliminar categoría -->
+                            <div class="modal fade" id="deleteModal<?= $categoria->id_categoria; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $categoria->id_categoria; ?>" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel<?= $categoria->id_categoria; ?>">Confirmación de eliminación</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Seguro que quieres eliminar la categoría: <strong><?= $categoria->nombre; ?></strong>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                            <a href="deleteCategoria/<?= $categoria->id_categoria; ?>" class="btn btn-danger">Sí</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+                <?php require "filtroAdmin.phtml"; ?>
+            </aside>
+        </div>
 
-                        <!-- Botón para confirmar eliminación -->
-                        <a href="deleteCategoria/<?= $categoria->id_categoria; ?>" class="btn btn-danger">Sí</a>
+        <div class="col-md-9">
+            <div class="row">
+                <?php foreach ($guitarras as $guitarra): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <!-- Aquí va la imagen de la guitarra -->
+                            <img src="ruta/a/la/imagen.jpg" class="card-img-top" alt="Imagen de la guitarra">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title text-center"><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h5>
+                                <p class="card-text">Categoría: <?= $guitarra->categoria_nombre; ?></p>
+                                <p class="card-text">Precio: $<?= $guitarra->precio; ?></p>
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>
+                            </div>
+                        </div>
+
+                        <!-- Modal para eliminar guitarra -->
+                        <div class="modal fade" id="deleteModal<?=$guitarra->id_guitarra;?>" tabindex="-1" aria-labelledby="deleteModalLabel<?=$guitarra->id_guitarra;?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel<?=$guitarra->id_guitarra;?>">Confirmación de eliminación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Seguro que quieres eliminar la guitarra: <strong><?=$guitarra->nombre?></strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <a class="btn btn-danger" href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>">Sí</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
-    <?php endif; ?>
-<?php endforeach; ?>
-        </ul>
-        <?php require "filtroAdmin.phtml"; ?>
-    </aside>
-    <ul class="list">
-        <?php foreach ($guitarras as $guitarra): ?>
-            <li>
-                <h2><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
-                <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
-                <p>Precio: $<?= $guitarra->precio; ?></p>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>
-            </li>
-            <!-- Modal -->
-            <div class="modal fade" id="deleteModal<?=$guitarra->id_guitarra;?>" tabindex="-1" aria-labelledby="deleteModalLabel<?=$guitarra->id_guitarra;?>" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel<?=$guitarra->id_guitarra;?>">Confirmación de eliminación</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ¿Seguro que quieres eliminar la guitarra: <strong><?=$guitarra->nombre?></strong>?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-
-
-                            <a class= "btn btn-danger"href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>">  Sí</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach ?>
-    </ul>
+    </div>
 </div>
-</main>
 
 
 

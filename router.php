@@ -24,6 +24,8 @@ if (!empty($_GET["action"])) {
 $params = explode("/", $action);
 $controller = new Controller($res);
 
+$controllerAuth = new ControllerAuth();
+
 
 
 switch ($params[0]) {
@@ -42,22 +44,14 @@ switch ($params[0]) {
             $controller->showGuitarraInvitado($id);
         }
         break;
-        case "guitarraAdmin":
-            sessionAuthMiddleware($res);
-            if (isset($params[1])) {
-    
-                $id = $params[1];
-                $controller->showGuitarra($id);
-            }
-            break;
-        case "guitarra":
+    case "guitarraAdmin":
+        sessionAuthMiddleware($res);
+        if (isset($params[1])) {
 
-            if (isset($params[1])) {
-    
-                $id = $params[1];
-                $controller->showGuitarra($id);
-            }
-            break;
+            $id = $params[1];
+            $controller->showGuitarra($id);
+        }
+        break;
     case "filtrarAdmin":
         sessionAuthMiddleware($res);
 
@@ -66,7 +60,7 @@ switch ($params[0]) {
     case "filtrar":
         $controller->showGuitarrasFiltradasInvitado();
         break;
-    
+
     case "form_guitarra":
         sessionAuthMiddleware($res);
 
@@ -116,20 +110,18 @@ switch ($params[0]) {
 
         if (isset($params[1])) {
             $controller->updateCategoria($params[1]);
-           
+
         }
         break;
     case 'showlogin':
-
-        $controller = new ControllerAuth();
-        $controller->showLogin();
+        $controllerAuth->showLogin();
         break;
     case 'login':
-        $controller=new ControllerAuth();
-        $controller->login();
+        $controllerAuth->login();
         break;
-        
+    case 'logout':
+        $controllerAuth ->logout();
     default:
-        echo "404 Page Not Found"; 
+        $controller->showError("Pagina no encontrada");
         break;
 }

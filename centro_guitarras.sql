@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2024 a las 07:27:18
+-- Tiempo de generación: 05-10-2024 a las 06:18:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,9 +37,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(7, 'sin_categoria'),
-(8, 'electrica'),
-(9, 'asdasdasd');
+(1, 'Electrica'),
+(2, 'Acustica'),
+(3, 'Electroacustica'),
+(4, 'sin_categoria');
 
 -- --------------------------------------------------------
 
@@ -51,16 +52,22 @@ CREATE TABLE `guitarra` (
   `id_guitarra` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `categoria_id` int(11) NOT NULL,
-  `precio` int(11) NOT NULL
+  `precio` int(11) NOT NULL,
+  `imagen_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `guitarra`
 --
 
-INSERT INTO `guitarra` (`id_guitarra`, `nombre`, `categoria_id`, `precio`) VALUES
-(15, 'asdasd', 7, 123123),
-(16, 'tt', 9, 123123);
+INSERT INTO `guitarra` (`id_guitarra`, `nombre`, `categoria_id`, `precio`, `imagen_url`) VALUES
+(4, 'Stratocaster', 1, 120000, ''),
+(5, 'Strandberg', 1, 250000, ''),
+(6, 'Telecaster', 1, 300000, ''),
+(7, 'Yamaha', 2, 150000, ''),
+(8, 'Epiphone', 2, 200000, ''),
+(9, 'Ovation', 3, 345000, ''),
+(10, 'Seagull', 3, 250000, '');
 
 -- --------------------------------------------------------
 
@@ -99,13 +106,6 @@ ALTER TABLE `guitarra`
   ADD KEY `INDICE CATEGORIA` (`categoria_id`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`nickname`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -113,19 +113,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `guitarra`
 --
 ALTER TABLE `guitarra`
-  MODIFY `id_guitarra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_guitarra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas

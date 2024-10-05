@@ -1,14 +1,40 @@
 <?php
 require "headerAdmin.phtml";
 ?>
+<div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <!-- Aquí va la imagen de la guitarra -->
+                            <img src="ruta/a/la/imagen.jpg" class="card-img-top" alt="Imagen de la guitarra">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title text-center"><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h5>
+                                <p class="card-text">Categoría: <?= $guitarra->categoria_nombre; ?></p>
+                                <p class="card-text">Precio: $<?= $guitarra->precio; ?></p>
+                            </div>
 
-<div class="container">
-    
-    <h2><?= $guitarra->nombre; ?></h2>
-    <ul>
-        <li>Categoria: <?= $guitarra->categoria_nombre; ?></li>
-        <li>Precio: $<?= $guitarra->precio; ?></li>
-        <a href="form_updateCategoria/<?= $guitarra->id_guitarra; ?>"><button class="btn">Cambiar categoria</button></a>
-</ul>
-</div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>
+                                <a href="form_updateCategoria/<?= $guitarra->id_guitarra; ?>"><button class="btn">Cambiar categoria</button></a>
+                            </div>
+                        </div>
+
+                        <!-- Modal para eliminar guitarra -->
+                        <div class="modal fade" id="deleteModal<?=$guitarra->id_guitarra;?>" tabindex="-1" aria-labelledby="deleteModalLabel<?=$guitarra->id_guitarra;?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel<?=$guitarra->id_guitarra;?>">Confirmación de eliminación</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Seguro que quieres eliminar la guitarra: <strong><?=$guitarra->nombre?></strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <a class="btn btn-danger" href="deleteGuitarra/<?= $guitarra->id_guitarra; ?>">Sí</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 

@@ -2,33 +2,50 @@
 require "header.phtml";
 ?>
 
-<div class="container">
-    <h1>GUITARRAS</h1>
-    <aside>
-        <ul class="list display-inline">
-            <h3>Categorias</h3>
-            <?php foreach ($categorias as $categoria): ?>
-    <?php if ($categoria->nombre != "sin_categoria"): ?>
-        <li><?= $categoria->nombre; ?></li>
+<div class="container mt-5">
+    <h1 class="text-center mb-5">GUITARRAS</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <aside>
+                <h3>Categorías</h3>
+                <ul class="list-group">
+                    <?php foreach ($categorias as $categoria): ?>
+                        <?php if ($categoria->nombre != "sin_categoria"): ?>
+                            <li class="list-group-item">
+                                <?= $categoria->nombre; ?>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+                <?php require "filtro.phtml"; ?>
+            </aside>
+        </div>
 
-        
-    <?php endif; ?>
-<?php endforeach; ?>
-        </ul>
-        <?php require "filtro.phtml"; ?>
-    </aside>
-    <ul class="list">
-        <?php foreach ($guitarras as $guitarra): ?>
-            <li>
-                <h2><a href="guitarra/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h2>
-                <span>Categoria: <?= $guitarra->categoria_nombre; ?></span>
-                <p>Precio: $<?= $guitarra->precio; ?></p>
-            </li>
-            
-        <?php endforeach ?>
-    </ul>
+        <div class="col-md-9">
+            <div class="row">
+                <?php foreach ($guitarras as $guitarra): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <!-- Imagen de la guitarra (reemplazar la ruta con la imagen correcta) -->
+                            <img src="ruta/a/la/imagen.jpg" class="card-img-top" alt="Imagen de la guitarra">
+
+                            <div class="card-body">
+                                <h5 class="card-title text-center">
+                                    <a href="guitarra/<?= $guitarra->id_guitarra; ?>">
+                                        <?= $guitarra->nombre; ?>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Categoría: <?= $guitarra->categoria_nombre; ?></p>
+                                <p class="card-text">Precio: $<?= $guitarra->precio; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
 </div>
-</main>
+
 
 
 

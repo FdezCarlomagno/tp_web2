@@ -180,6 +180,9 @@ class Controller
 
 
     }
+    public function showError($msg){
+        $this->view->showError($msg);
+    }
 
     private function redirect()
     {
