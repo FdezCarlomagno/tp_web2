@@ -1,4 +1,4 @@
-# TPE 2024 - Base de Datos para Guitarras
+# TPE 2024 - Base de Datos para Centro de Guitarras
 
 ## Integrantes
 
@@ -61,7 +61,6 @@ A continuación se incluye un diagrama de la base de datos:
    git clone https://github.com/FdezCarlomagno/tp_web2.git
 
 2. Importa el archivo .sql proporcionado en tu base de datos local usando phpMyAdmin o la terminal de MySQL:
-  ```bash
   tp_web2/centro_guitarras.sql
 
 3. La base de datos se creará con datos de ejemplo que incluyen algunas guitarras y sus respectivas categorías.
