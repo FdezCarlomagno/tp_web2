@@ -103,12 +103,18 @@ class Controller
         if (empty($_POST["categoria_id"])) {
             $this->view->showError("Falta la categoria de la guitarra");
         }
+        if(empty($_POST["imagen_url"])){
+            $this->view->showError("Falta una imagen de la guitarra");
+        }
 
         $nombre = $_POST["nombre"];
         $precio = $_POST["precio"];
         $categoria_id = $_POST["categoria_id"];
+        $imagen_url = $_POST["imagen_url"];
 
-        $this->model->addGuitarra($nombre, $categoria_id, $precio);
+       
+
+        $this->model->addGuitarra($nombre, $categoria_id, $precio, $imagen_url);
 
         $this->redirect();
     }
@@ -179,6 +185,25 @@ class Controller
 
 
 
+    }
+    public function showFormUpdateImg($id){
+        $guitarra = $this->model->getGuitarraById($id);
+
+        $guitarra->categoria_nombre = $this->model->getNombreCategoriaById($guitarra->categoria_id);
+
+        $this->view->showFormUpdateImg($guitarra);
+    }
+    public function updateImg($id){
+        if(empty($_POST["imagen_url"])){
+            $this->view->showError("Falta la URL de la imagen");
+            return;
+        }
+
+        $imagen_url = $_POST["imagen_url"];
+
+        $this->model->updateImg($id, $imagen_url);
+
+        header("Location: " . BASE_URL . "/guitarraAdmin/" . $id);
     }
     public function showError($msg){
         $this->view->showError($msg);

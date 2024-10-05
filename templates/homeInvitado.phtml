@@ -24,21 +24,21 @@ require "header.phtml";
         <div class="col-md-9">
             <div class="row">
                 <?php foreach ($guitarras as $guitarra): ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
+                   <div class="col-md-4 mb-4">
+                   <a href="guitarra/<?= $guitarra->id_guitarra; ?>"><div class="card h-100 card-guitar">
                             <!-- Imagen de la guitarra (reemplazar la ruta con la imagen correcta) -->
-                            <img src="ruta/a/la/imagen.jpg" class="card-img-top" alt="Imagen de la guitarra">
+                            <img src="<?= $guitarra->imagen_url; ?>" class="card-img-top" alt="Imagen de la guitarra">
 
                             <div class="card-body">
                                 <h5 class="card-title text-center">
-                                    <a href="guitarra/<?= $guitarra->id_guitarra; ?>">
+                                    <a href="guitarra/<?= $guitarra->id_guitarra; ?>" class="anchor">
                                         <?= $guitarra->nombre; ?>
                                     </a>
                                 </h5>
                                 <p class="card-text">Categoría: <?= $guitarra->categoria_nombre; ?></p>
                                 <p class="card-text">Precio: $<?= $guitarra->precio; ?></p>
                             </div>
-                        </div>
+                        </div></a>
                     </div>
                 <?php endforeach; ?>
             </div>

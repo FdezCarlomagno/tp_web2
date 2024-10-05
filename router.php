@@ -113,6 +113,22 @@ switch ($params[0]) {
 
         }
         break;
+    case "form_updateImg":
+        if(isset($params[1])){
+            $controller->showFormUpdateImg($params[1]);
+        }
+        
+        break;
+    case "updateImg":
+        sessionAuthMiddleware($res);
+
+        if(isset($params[1])){
+            $controller->updateImg($params[1]);
+        }
+        break;
+    case "error":
+        $controllerAuth->showError();
+        break;
     case 'showlogin':
         $controllerAuth->showLogin();
         break;

@@ -43,10 +43,10 @@ class Model
         return $filteredGuitars;
     }
 
-    public function addGuitarra($nombre, $categoria_id, $precio)
+    public function addGuitarra($nombre, $categoria_id, $precio, $imagen_url)
     {
-        $query = $this->db->prepare("INSERT INTO guitarra(nombre, categoria_id, precio) VALUES(?,?,?)");
-        $query->execute([$nombre, $categoria_id, $precio]);
+        $query = $this->db->prepare("INSERT INTO guitarra(nombre, categoria_id, precio, imagen_url) VALUES(?,?,?,?)");
+        $query->execute([$nombre, $categoria_id, $precio, $imagen_url]);
 
         return $this->db->lastInsertId();
     }
@@ -131,5 +131,11 @@ class Model
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function updateImg($id, $imagen_url){
+        $query = $this->db->prepare("UPDATE guitarra SET imagen_url = ? WHERE id_guitarra = ?");
+        $query->execute([$imagen_url, $id]);
+
     }
 }

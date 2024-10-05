@@ -45,12 +45,12 @@ require "headerAdmin.phtml";
             <div class="row">
                 <?php foreach ($guitarras as $guitarra): ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
+                    <a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><div class="card h-100 card-guitar">
                             <!-- Aquí va la imagen de la guitarra -->
-                            <img src="ruta/a/la/imagen.jpg" class="card-img-top" alt="Imagen de la guitarra">
+                            <img src="<?= $guitarra->imagen_url?>" class="card-img-top" alt="Imagen de la guitarra">
                             
                             <div class="card-body">
-                                <h5 class="card-title text-center"><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>"><?= $guitarra->nombre; ?></a></h5>
+                                <h5 class="card-title text-center"><a href="guitarraAdmin/<?= $guitarra->id_guitarra; ?>" class="anchor"><?= $guitarra->nombre; ?></a></h5>
                                 <p class="card-text">Categoría: <?= $guitarra->categoria_nombre; ?></p>
                                 <p class="card-text">Precio: $<?= $guitarra->precio; ?></p>
                             </div>
@@ -58,7 +58,7 @@ require "headerAdmin.phtml";
                             <div class="card-footer text-center">
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?=$guitarra->id_guitarra;?>">Eliminar</button>
                             </div>
-                        </div>
+                        </div></a>
 
                         <!-- Modal para eliminar guitarra -->
                         <div class="modal fade" id="deleteModal<?=$guitarra->id_guitarra;?>" tabindex="-1" aria-labelledby="deleteModalLabel<?=$guitarra->id_guitarra;?>" aria-hidden="true">

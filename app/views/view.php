@@ -33,5 +33,9 @@ class View {
     public function showFormUpdateCategoria($guitarra, $categorias){
         require "templates/formUpdateCategoria.phtml";
     }
+    public function showFormUpdateImg($guitarra){
+        require "templates/formUpdateImg.phtml";
+    }
+  
     
 }

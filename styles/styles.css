@@ -1,0 +1,73 @@
+.card-guitar:hover {
+    transform: scale(1.05);
+    border: 3px solid black;
+    transition: all 200ms ease-in-out;
+}
+
+.card-guitar, .card-guitar a {
+    border: none;
+    background-color: #222;
+    color: aliceblue;
+}
+.card-guitar {
+    border: 2px solid black;
+}
+.card-guitar img {
+    border-radius: 6px 6px 0 0;
+}
+.only:hover{
+    transform: scale(1);
+    transition: all 200ms ease-in-out;
+}
+.card-footer button {
+    color: aliceblue;
+}
+
+.anchor {
+    color: black;
+    text-decoration: none;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.navbar {
+    transition: all 0.3s ease; /* Suaviza la transición */
+}
+
+.navbar:hover {
+    background-color: #f8f9fa; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.nav-link {
+    font-weight: 500; /* Cambia el peso de la fuente */
+    color: #333; /* Color del texto */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Cambia el color al pasar el mouse */
+}
+
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1); /* Color del borde del botón de colapso */
+}
+
+.navbar-toggler:focus {
+    box-shadow: none; /* Elimina el efecto de sombra al enfocar */
+}
+
+nav {
+    background: linear-gradient(90deg, #ff798d, #ffed4e);
+
+}
+body, p {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}

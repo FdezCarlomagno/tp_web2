@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2024 a las 06:18:46
+-- Tiempo de generación: 05-10-2024 a las 20:05:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,9 +37,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Electrica'),
-(2, 'Acustica'),
-(3, 'Electroacustica'),
+(1, 'Eléctrica'),
+(2, 'Acústica'),
+(3, 'Electro-acústica'),
 (4, 'sin_categoria');
 
 -- --------------------------------------------------------
@@ -61,13 +61,15 @@ CREATE TABLE `guitarra` (
 --
 
 INSERT INTO `guitarra` (`id_guitarra`, `nombre`, `categoria_id`, `precio`, `imagen_url`) VALUES
-(4, 'Stratocaster', 1, 120000, ''),
-(5, 'Strandberg', 1, 250000, ''),
-(6, 'Telecaster', 1, 300000, ''),
-(7, 'Yamaha', 2, 150000, ''),
-(8, 'Epiphone', 2, 200000, ''),
-(9, 'Ovation', 3, 345000, ''),
-(10, 'Seagull', 3, 250000, '');
+(16, 'Fender Stratocaster', 1, 3000000, 'https://www.heavenimagenes.com/heavencommerce/0c3d234c-03b5-48ac-85a1-10e80752be67/images/v2/FENDER/1608201401585595_01_medium.jpg'),
+(20, 'Gibson Les Paul', 1, 12000000, 'https://musichall.com.py/tienda/wp-content/uploads/2023/05/1GUIGILPDX007CCH1E.jpg'),
+(21, 'Ibanez RG550', 1, 5000000, 'https://mariogomez.com.ar/wp-content/uploads/2023/09/ibanez-rg550-rf-principal.jpg'),
+(22, 'PRS Custom 24', 1, 7500000, 'https://tiendafeedback.com.ar/64393-large_default/guitarra-electrica-prs-se-custom-24-08-color-orange-paul-reed-smith.jpg'),
+(23, 'Martin D-28', 2, 4500000, 'https://http2.mlstatic.com/D_Q_NP_692098-MLA74782360301_022024-O.webp'),
+(24, 'Taylor 214ce', 2, 6800000, 'https://http2.mlstatic.com/D_Q_NP_678507-MLA74780228331_022024-O.webp'),
+(25, 'Gibson J-45', 2, 1050000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXVYHxaBY3sc_D9Bj5BOBb8VFIdpEBtLs5mw&s'),
+(26, 'Fender CD-60SCE', 3, 5600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSYRGswIDCfwsD-aLdmSrqrZabo6uhBDlhpA&s'),
+(28, 'Strandberg', 1, 15000000, 'https://www.megamusiconline.com.au/wp-content/uploads/2023/10/SBGBDNSTDNX8NAT.png');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `guitarra`
 --
 ALTER TABLE `guitarra`
-  MODIFY `id_guitarra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_guitarra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas

@@ -10,4 +10,7 @@ class AuthView {
     public function showSignup() {
         require 'templates/form_signup.phtml';
     }
+    public function showError(){
+        require "templates/formError.phtml";
+    }
 }

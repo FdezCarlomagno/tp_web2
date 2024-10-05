@@ -17,11 +17,12 @@ class ControllerAuth{
     }
 
     public function login() {
-        if (!isset($_POST['nickname']) || empty($_POST['nickname'])) {
+
+        if (empty($_POST['nickname'])) {
             return $this->view->showLogin();
         }
     
-        if (!isset($_POST['password']) || empty($_POST['password'])) {
+        if (empty($_POST['password'])) {
             return $this->view->showLogin();
         }
     
@@ -42,9 +43,14 @@ class ControllerAuth{
     
             // Redirijo al home
             header('Location: ' . BASE_URL);
+            exit();
         } else {
-            return $this->view->showLogin();
+            header("Location: " . BASE_URL . "error");
+            return;
         }
+    }
+    public function showError(){
+        $this->view->showError();
     }
 
     public function logout() {
