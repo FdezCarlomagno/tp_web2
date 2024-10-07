@@ -124,6 +124,38 @@ switch ($params[0]) {
             $controller->updateImg($params[1]);
         }
         break;
+        case "form_updateNombre":
+            if (isset($params[1])) {
+                $controller->showFormUpdateNombre($params[1]);
+            }
+    
+            break;
+        case "updateNombre":
+            sessionAuthMiddleware($res);
+    
+            if (isset($params[1])) {
+                $controller->updateNombre($params[1]);
+            }
+            break;
+            case "form_updateNombre":
+            if (isset($params[1])) {
+                $controller->showFormUpdateNombre($params[1]);
+            }
+    
+            break;
+            case "form_updatePrecio":
+                if (isset($params[1])) {
+                    $controller->showFormUpdatePrecio($params[1]);
+                }
+        
+                break;
+                case "updatePrecio":
+                    sessionAuthMiddleware($res);
+            
+                    if (isset($params[1])) {
+                        $controller->updatePrecio($params[1]);
+                    }
+                    break;
     case "signup":
         $controllerAuth->showSignup();
         break;

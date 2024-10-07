@@ -1,0 +1,22 @@
+<?php
+require "guitarraAdmin.phtml";
+?>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Cambiar imagen de la Guitarra</h2>
+    <form action="updateNombre/<?=$guitarra->id_guitarra?>" method="POST" class="p-4 border rounded shadow">
+    <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre de la guitarra</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nuevo nombre de la guitarra" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Cambiar</button>
+    </form>
+</div>
+
+<!-- Añade Bootstrap JS si lo necesitas -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<?php
+require "footer.phtml";
+?>

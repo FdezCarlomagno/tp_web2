@@ -46,6 +46,14 @@ class View
     {
         require "templates/formUpdateImg.phtml";
     }
+    public function showFormNombre($guitarra)
+    {
+        require "templates/formUpdateNombre.phtml";
+    }
+    public function showFormPrecio($guitarra)
+    {
+        require "templates/formUpdatePrecio.phtml";
+    }
 
 
 }
