@@ -160,4 +160,21 @@ class Model
         $query->execute([$imagen_url, $id]);
 
     }
+    public function orderGuitarras($orden){
+        $sql = "SELECT * FROM guitarra ";
+        
+        switch ($orden) {
+            case "ordenPrecio":
+                $sql .= " ORDER BY precio ASC";
+                break;
+            case "ordenNombre":
+                $sql .= " ORDER BY nombre ASC";
+                break;
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

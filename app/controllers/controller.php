@@ -90,6 +90,19 @@ class Controller
         $this->view->showHomeInvitado($guitarras, $categorias); // Pasar las guitarras y categorías a la vista
 
     }
+    public function showGuitarrasOrdenadas(){
+        if(empty($_GET["orden"])){
+            $this->view->showError("ha ocurrido un error al ordenar las guitarras");
+            return;
+        }
+        $orden = $_GET["orden"];
+
+        $guitarras = $this->model->orderGuitarras($orden);
+        $categorias = $this->model->getCategorias();
+        $this->setCategoriaNombre($guitarras);
+
+        $this->view->showHome($guitarras, $categorias);
+    }
     public function addGuitarra()
     {
         //Validaciones

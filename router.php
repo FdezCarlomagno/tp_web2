@@ -58,7 +58,9 @@ switch ($params[0]) {
     case "filtrar":
         $controller->showGuitarrasFiltradasInvitado();
         break;
-
+    case "ordenar":
+        $controller->showGuitarrasOrdenadas();
+        break;
     case "form_guitarra":
         sessionAuthMiddleware($res);
 
