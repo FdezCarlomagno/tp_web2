@@ -59,9 +59,7 @@
     box-shadow: none; /* Elimina el efecto de sombra al enfocar */
 }
 
-nav {
-    background: linear-gradient(90deg, #ff798d, #ffed4e);
-}
+
 body, p {
     font-family: 'Poppins', sans-serif;
 }
@@ -70,3 +68,8 @@ h1 {
     font-family: 'Playfair Display', serif;
     font-weight: bold;
 }
+
+nav {
+    background: linear-gradient(90deg, #ff798d, #ffed4e);
+}
+
