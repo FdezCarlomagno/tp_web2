@@ -160,6 +160,24 @@ class Model
         $query->execute([$imagen_url, $id]);
 
     }
+
+    public function cambiarNombre($id, $nombre)
+    {
+        $query = $this->db->prepare("UPDATE guitarra SET nombre = ? WHERE id_guitarra = ?");
+        $query->execute([$nombre, $id]);
+
+
+
+    }
+    public function updatePrecio($id, $precio)
+    {
+        echo "el nuevo precio es".$precio;
+        $query = $this->db->prepare("UPDATE guitarra SET precio = ? WHERE id_guitarra = ?");
+        $query->execute([$precio, $id]);
+
+
+
+    }
     public function orderGuitarras($orden){
         $sql = "SELECT * FROM guitarra ";
         

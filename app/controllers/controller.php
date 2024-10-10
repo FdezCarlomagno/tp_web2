@@ -206,6 +206,38 @@ class Controller
 
         $this->view->showFormUpdateImg($guitarra);
     }
+    public function showFormUpdateNombre($id)
+    {
+        $guitarra = $this->model->getGuitarraById($id);
+
+        $guitarra->categoria_nombre = $this->model->getNombreCategoriaById($guitarra->categoria_id);
+        $this->view->showFormNombre($guitarra);
+        
+        
+
+    }
+    public function showFormUpdatePrecio($id)
+    {
+        $guitarra = $this->model->getGuitarraById($id);
+
+        $guitarra->categoria_nombre = $this->model->getNombreCategoriaById($guitarra->categoria_id);
+        $this->view->showFormPrecio($guitarra);
+        
+        
+
+    }
+    public function updateNombre($id)
+    {
+        if(empty($_POST["nombre"])){
+            $this->view->showError("ingrese un nombre");
+            return;
+        }
+        $nombre=$_POST["nombre"];
+        $this->model->cambiarNombre($id, $nombre);
+        header("Location: " . BASE_URL . "/guitarraAdmin/" . $id);
+
+
+    }
     public function updateImg($id){
         if(empty($_POST["imagen_url"])){
             $this->view->showError("Falta la URL de la imagen");
@@ -215,6 +247,18 @@ class Controller
         $imagen_url = $_POST["imagen_url"];
 
         $this->model->updateImg($id, $imagen_url);
+
+        header("Location: " . BASE_URL . "/guitarraAdmin/" . $id);
+    }
+    public function updatePrecio($id){
+        if(empty($_POST["precio"])){
+            $this->view->showError("Falta el precio");
+            return;
+        }
+
+        $precio = $_POST["precio"];
+
+        $this->model->updatePrecio($id, $precio);
 
         header("Location: " . BASE_URL . "/guitarraAdmin/" . $id);
     }
